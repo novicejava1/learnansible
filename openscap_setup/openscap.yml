@@ -1,0 +1,28 @@
+---
+- name: openscap setup
+  hosts: alerta
+  become: true
+  become_user: root
+  tasks:
+  - name: ubuntu name
+    command: lsb_release -cs
+    register: rel
+  - name: install openscap-scanner
+    apt:
+      name: libopenscap8
+      state: present
+  - name: validate installation
+    shell: oscap --version
+    register: oscap_version
+  - name: print oscap version
+    debug: msg={{ oscap_version.stdout }}
+  - name: print ubuntu release
+    debug: msg={{ rel.stdout }}
+  - name: download oval file
+    get_url:
+      url: https://security-metadata.canonical.com/oval/com.ubuntu.focal.usn.oval.xml.bz2
+      dest:  /home/ubuntu/ubuntu.focal.usn.oval.xml.bz2
+
+
+ 
+

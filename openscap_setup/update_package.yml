@@ -1,0 +1,15 @@
+---
+- name: openscap vulnerability fix
+  hosts: alerta
+  become: true
+  become_user: root
+  tasks:
+  - name: update kernel
+    apt:
+      name: "{{ item }}"
+      state: present
+      update_cache: yes
+    with_items:
+      - linux-image-5.13.0-1019-aws
+      - linux-image-aws
+      - linux-aws
