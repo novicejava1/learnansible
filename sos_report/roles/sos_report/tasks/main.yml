@@ -1,5 +1,5 @@
 ---
-- name: install sos package
+- name: install sos package and dependencies
   dnf:
     name: sos
     state: present
