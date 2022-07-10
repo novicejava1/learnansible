@@ -10,4 +10,11 @@
   register: listlocale_output
 
 - name: print list of system locales
-  debug: msg="{{ listlocale_output.stdout_lines }}" 
+  debug: msg="{{ listlocale_output.stdout_lines }}"
+
+- name: list available keymaps
+  shell: localectl list-keymaps
+  register: listkeymaps_output
+
+- name: print list of system keymaps
+  debug: msg="{{ listkeymaps_output.stdout_lines }}"
