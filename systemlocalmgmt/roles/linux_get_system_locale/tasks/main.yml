@@ -1,6 +1,13 @@
 - name: get system locale settings
   shell: localectl status
   register: locale_output
+
 - name: print system locale settings
-  debug: 
-    msg="{{ locale_output.stdout }}"
+  debug: msg="{{ locale_output.stdout_lines }}"
+
+- name: list available locales
+  shell: localectl list-locales
+  register: listlocale_output
+
+- name: print list of system locales
+  debug: msg="{{ listlocale_output.stdout_lines }}" 
