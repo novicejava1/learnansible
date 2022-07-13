@@ -3,6 +3,11 @@
     name: httpd
     state: present
 
+- name: copy the httpd.conf template
+  template:
+    src: "httpd.conf.j2"
+    dest: "/etc/httpd/conf/httpd.conf"
+
 - name: ensure http service is enabled and running
   service: 
     name: httpd 
@@ -20,7 +25,7 @@
   copy: 
     src: "{{ item }}"
     dest: /var/www/html/
-  with_fileglob: "files/*"
+  with_fileglob: "files/static/*"
 
 #  - name: Copy html file to httpd docroot
 #    copy: 
