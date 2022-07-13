@@ -23,9 +23,12 @@
 
 - name: copy html file to httpd docroot
   copy: 
-    src: "{{ item }}"
-    dest: /var/www/html/
-  with_fileglob: "files/static/*"
+    src: "static"
+    dest: "/var/www/html/"
+#    src: "{{ item }}"
+#    dest: /var/www/html/
+#  with_fileglob: "files/static/*"
+
 
 #  - name: Copy html file to httpd docroot
 #    copy: 
