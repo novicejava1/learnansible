@@ -8,5 +8,5 @@
   shell: rsync -r "{{ nginx_config }}" "{{ nginx_config_backup }}"
 
 - name: ensure backup compressed
-  shell: cd "{{ nginx_config_backup }}"; tar -czvf "{{ nginx_config_backup }}"/nginx_$(date +%F).tar.gz nginx
+  shell: cd "{{ nginx_config_backup }}"; tar -czvf "{{ nginx_config_backup }}"/nginx_$(date +%F_%H_%M_%Z).tar.gz nginx
 
