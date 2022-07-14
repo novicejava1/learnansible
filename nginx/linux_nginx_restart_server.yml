@@ -5,3 +5,4 @@
   become_user: root
   roles:
   - {role: linux_nginx_restart_server}
+  - {role: 'linux_nginx_service_status'}

@@ -8,3 +8,4 @@
   - {role: 'linux_nginx_config_backup'}
   - {role: 'linux_nginx_config_update'}
   - {role: 'linux_nginx_start_server'}
+  - {role: 'linux_nginx_service_status'}
