@@ -21,6 +21,13 @@
     state: enabled 
     immediate: true
 
+- name: allow apache http port
+  firewalld:
+    port: 2080/tcp
+    permanent: yes
+    state: enabled
+    immediate: true
+
 - name: copy html file to httpd docroot
   copy: 
     src: "static"
