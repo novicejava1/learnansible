@@ -23,7 +23,7 @@
 
 - name: allow apache http port
   firewalld:
-    port: 2080/tcp
+    port: "{{ apache_http_port }}/tcp"
     permanent: yes
     state: enabled
     immediate: true
