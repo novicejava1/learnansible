@@ -19,13 +19,17 @@ checkexpiry()
                 #echo $expiry
                 #echo $currentdate
                 #echo $DIFF
-                if [[ $DIFF -lt 7 ]]
+                if [[ $DIFF -lt 0 ]]
+                then
+                        echo "$user - Password expired"
+                        #(echo "From: $from"; echo "To: $to"; echo "Subject: Password expired") | sendmail -t # Make sure sendmail is configured to send email
+                elif [[ $DIFF -lt 7 ]]
                 then
                         echo "$user - Password expires within 7 days"
-                        (echo "From: $from"; echo "To: $to"; echo "Subject: Password expires within 7 days") | sendmail -t # Make sure sendmail is configured to send email
+                        #(echo "From: $from"; echo "To: $to"; echo "Subject: Password expires within 7 days") | sendmail -t # Make sure sendmail is configured to send email                        
                 else
                         echo "$user - Password has time to expire"
-                        (echo "From: $from"; echo "To: $to"; echo "Subject: Password has time to expire") | sendmail -t # Make sure sendmail is configured to send email
+                        #(echo "From: $from"; echo "To: $to"; echo "Subject: Password has time to expire") | sendmail -t # Make sure sendmail is configured to send email
                 fi
         fi
 
