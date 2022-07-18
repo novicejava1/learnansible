@@ -20,3 +20,11 @@
     minute: "0"
     hour: "5"
     job: "{{ cronjob_scripts_loc }}/passwordexpirynotify.sh {{ user }} > /dev/null 2>&1"
+
+- name: create crontab entry for admin user
+  cron:
+    name: password expiry notification
+    minute: "0"
+    hour: "5"
+    user: "admin"
+    job: "{{ cronjob_scripts_loc }}/passwordexpirynotify.sh {{ user }} > /dev/null 2>&1"
