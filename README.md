@@ -70,3 +70,12 @@ This secion contains information related to Apache HTTP Server installation, con
 ## Nginx
 This secion contains information related to Nginx Server installation, configuration and management using ansible roles.
 
+| Role  | Description |
+| ------------- | ------------- |
+| linux_install_nginx_server  | Install Nginx Server |
+| linux_nginx_service_status  | Check Nginx Server Status |
+| linux_nginx_restart_server  | Restart Nginx Server |
+| linux_nginx_config_backup  | Backup Nginx Server Configuration |
+| linux_nginx_start_server  | Start Nginx Server |
+| linux_nginx_stop_server  | Stop Nginx Server |
+| linux_nginx_config_update  | Update Nginx Server Configuration |
