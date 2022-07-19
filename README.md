@@ -57,6 +57,16 @@ This secion contains information related to Linux system management using ansibl
 ## Apache
 This secion contains information related to Apache HTTP Server installation, configuration and management using ansible roles.
 
+| Role  | Description |
+| ------------- | ------------- |
+| linux_install_http_server  | Install Apache HTTP Server |
+| linux_apache_server_status  | Check Apache HTTP Server Status |
+| linux_apache_restart_server  | Restart Apache HTTP Server |
+| linux_apache_config_backup  | Backup Apache HTTP Server Configuration |
+| linux_apache_start_server  | Start Apache HTTP Server |
+| linux_apache_stop_server  | Stop Apache HTTP Server |
+| linux_apache_config_update  | Update Apache HTTP Server Configuration |
+
 ## Nginx
 This secion contains information related to Nginx Server installation, configuration and management using ansible roles.
 
