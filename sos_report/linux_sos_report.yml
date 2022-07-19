@@ -1,8 +1,0 @@
----
-- name: Linux SOS report generation playbook
-  hosts: sandbox
-  become: true
-  become_user: root
-  roles:
-    - { role: 'sos_report' } 
-
