@@ -54,6 +54,14 @@ This secion contains information related to Linux system management using ansibl
 | ------------- | ------------- |
 | linux_generate_sos_report  | Generate SOS Report |
 
+### systemsecuritymgmt
+| Role  | Description |
+| ------------- | ------------- |
+| linux_post_installation_check  | Post Installation Check |
+| linux_get_system_crypto_policy  | Get System Crypto Policy Set |
+| linux_set_system_crypto_policy  | Set System Crypto Policy |
+| linux_file_integrity_scan  | File integrity Scan using AIDE |
+
 ## Apache
 This secion contains information related to Apache HTTP Server installation, configuration and management using ansible roles.
 
