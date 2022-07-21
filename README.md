@@ -87,3 +87,11 @@ This secion contains information related to Nginx Server installation, configura
 | linux_nginx_start_server  | Start Nginx Server |
 | linux_nginx_stop_server  | Stop Nginx Server |
 | linux_nginx_config_update  | Update Nginx Server Configuration |
+
+## Elasticstack
+This secion contains information related to Elasticstack installation, configuration and management using ansible roles.
+
+| Role  | Description |
+| ------------- | ------------- |
+| linux_install_elasticsearch  | Install Elasticsearch |
+| linux_elasticsearch_reset_password  | Reset Elastic user password |
