@@ -4,4 +4,4 @@
   become: true
   become_user: root
   roles:
-  - {role: 'linux_install_kibana'}
+  - {role: 'linux_install_kibana_server'}
