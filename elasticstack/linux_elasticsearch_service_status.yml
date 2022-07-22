@@ -4,4 +4,4 @@
   become: true
   become_user: root
   roles:
-  - {role: 'linxu_elasticsearch_serivce_status'}
+  - {role: 'linux_elasticsearch_serivce_status'}
