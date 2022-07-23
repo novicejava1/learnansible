@@ -93,5 +93,10 @@ This secion contains information related to Elasticstack installation, configura
 
 | Role  | Description |
 | ------------- | ------------- |
-| linux_install_elasticsearch  | Install Elasticsearch |
+| linux_install_elasticsearch_server  | Install Elasticsearch |
 | linux_elasticsearch_reset_password  | Reset Elastic user password |
+| linux_elasticsearch_stop_server  | Stop Elasticsearch server |
+| linux_elasticsearch_start_server  | Start Elasticsearch server |
+| linux_elasticsearch_service_status  | Check Elasticsearch service status |
+| linux_elasticsearch_config_backup  | Elasticsearch config backup |
+| linux_elasticsearch_config_update  | Elasticsearch config update |
