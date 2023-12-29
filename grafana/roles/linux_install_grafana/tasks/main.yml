@@ -1,0 +1,17 @@
+---
+- name: Add grafana repository
+  yum_repository:
+    name: grafana
+    description: grafana repo
+    baseurl: "{{grafana_install_repo}}"
+    gpgkey: "{{grafana_install_gpg_key}}"
+    gpgcheck: true
+    repo_gpgcheck: true
+    enabled: true
+    sslverify: true
+    sslcacert: /etc/pki/tls/certs/ca-bundle.crt
+
+- name: Install grafana oss
+  dnf:
+    name: grafana
+    state: present

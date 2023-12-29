@@ -1,0 +1,5 @@
+---
+docker_repository: "https://download.docker.com/linux/fedora/docker-ce.repo"
+docker_compose_repository: "https://github.com/docker/compose/releases/download/v2.20.3/docker-compose-linux-x86_64"
+sonar_user: "vagrant"
+sonar_group: "docker"

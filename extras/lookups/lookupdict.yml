@@ -1,0 +1,12 @@
+---
+- name: Lookup Dictionary data
+  hosts: all
+  vars:
+    hosts:
+      testhost1: 127.0.0.2
+      testhost2: 127.0.0.3
+  tasks:
+    - name: Print Dictionary data
+      debug:
+        msg: '{{ item }}'
+      loop: "{{ hosts.values() | list }}"

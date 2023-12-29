@@ -1,0 +1,30 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+    config.hostmanager.enabled = true
+    config.hostmanager.manage_host = true
+    config.hostmanager.manage_guest = true
+  
+    config.vm.define "httpd" do |httpd|
+      httpd.vm.box = "fedora/38-cloud-base"
+      httpd.vm.hostname = "fedhttpd.stack.com"
+      httpd.vm.network "forwarded_port", guest: 80, host: 8080
+  
+      httpd.vm.synced_folder '.', '/vagrant', disabled: true
+      httpd.vm.synced_folder ".", "/home/vagrant/httpd", type: "sshfs"
+  
+      httpd.vm.provider "libvirt" do |libvirt|
+        libvirt.cpus = 2
+        libvirt.memory = 2048
+      end
+  
+      # Switch to "ansible_local" to install and use ansible on guest VM
+  
+      httpd.vm.provision "ansible" do |ansible|
+        ansible.playbook = "ansible/linux_provision_httpd_server.yml"
+        ansible.verbose = true
+      end
+    end
+  end

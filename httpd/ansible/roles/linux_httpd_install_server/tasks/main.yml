@@ -1,0 +1,11 @@
+- name: ensure httpd package is installed
+  dnf: 
+    name: httpd
+    state: present
+
+- name: ensure httpd service is started and enabled
+  service: 
+    name: httpd 
+    state: started 
+    enabled: yes
+

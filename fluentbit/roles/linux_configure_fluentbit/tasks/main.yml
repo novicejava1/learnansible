@@ -1,0 +1,7 @@
+- name: "upload fluent-bit config"
+  template:
+    src: "{{fluentbit_config_template}}"
+    dest: "{{fluentbit_config_directory}}/fluent-bit.conf"
+    owner: "root"
+    group: "root"
+    mode: 0644

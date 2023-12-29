@@ -1,0 +1,7 @@
+- name: "upload grafana config"
+  template:
+    src: "{{grafana_config_template}}"
+    dest: "{{grafana_config_directory}}/grafana.ini"
+    owner: "root"
+    group: "grafana"
+    mode: 0640

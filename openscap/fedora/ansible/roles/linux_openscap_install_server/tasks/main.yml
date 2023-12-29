@@ -1,0 +1,41 @@
+- name: fedora release name
+  command: cat /etc/redhat-release
+  register: rel
+
+- name: print fedora release
+  debug: msg={{ rel.stdout }}
+
+- name: install pre-requisites
+  dnf:
+    name:
+      - wget
+      - zip
+    state: latest
+
+- name: install openscap-scanner
+  dnf:
+    name:
+      - openscap-scanner
+      - scap-security-guide
+    state: latest
+  
+- name: validate installation
+  shell: oscap --version | grep "command line tool"
+  register: oscap_version
+  
+- name: print oscap version
+  debug: msg={{ oscap_version.stdout }}
+
+- name: copy script
+  copy:
+    src: openscap_scan.sh
+    dest: /home/vagrant/openscap/openscap_scan.sh
+    mode: 0755
+
+- name: print oval, ssg, ssg_version
+  debug:
+    msg: ssg {{ ssg_endpoint }}, ssg_version {{ ssg_version }}
+  
+- name: Scan system for vulnerability
+  shell: /home/vagrant/openscap/openscap_scan.sh "{{ ssg_endpoint }}" "{{ ssg_version }}"
+  ignore_errors: true

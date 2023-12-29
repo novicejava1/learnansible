@@ -1,0 +1,8 @@
+---
+- name: ensure docker compose file exists
+  template:
+    src: "docker-compose.yml.j2"
+    dest: "{{gitlab_home}}/docker-compose.yml"
+
+- name: ensure gitlab service up
+  command: "/usr/local/bin/docker-compose -f {{gitlab_home}}/docker-compose.yml up -d"

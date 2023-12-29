@@ -1,0 +1,16 @@
+---
+- name: ensure docker compose file exists
+  template:
+    src: "docker-compose.yml.j2"
+    dest: "{{sonar_home}}/docker-compose.yml"
+
+- name: ensure max map count set
+  template:
+    src: "sysctl.conf.j2"
+    dest: "/etc/sysctl.conf"
+
+- name: ensure kernel parameters reloaded
+  command: "sysctl -p"
+
+- name: ensure sonar service up
+  command: "/usr/local/bin/docker-compose -f {{sonar_home}}/docker-compose.yml up -d"

@@ -1,0 +1,4 @@
+- name: "ensure docker service stopped"
+  service:
+    name: docker
+    state: stopped

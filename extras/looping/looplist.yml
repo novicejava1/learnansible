@@ -1,0 +1,17 @@
+---
+- name: Loop through an array
+  hosts: all
+  tasks: 
+    - name: Loop through an array of different sizes with loop
+      debug: msg="Display array - {{ item }}"
+      loop:
+        - 1
+        - [3, 5]
+        - [7, 9, 11]
+    - name: Loop through an array of different sizes with with_items
+      debug: msg="Display array - {{ item }}"
+      with_items:
+        - 1
+        - [3, 5]
+        - [7, 9, 11]
+      

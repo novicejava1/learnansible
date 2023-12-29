@@ -1,0 +1,14 @@
+---
+- name: Loop through a list of txt and pdf files
+  hosts: all
+  tasks:
+    - name: Loop through a list of .txt files
+      debug: msg="Text File - {{ item }}"
+      with_fileglob:
+        - "*.txt"
+
+    - name: Loop through a list of .pdf files
+      debug: msg="PDF File - {{ item }}"
+      with_fileglob:
+        - "*.pdf"
+

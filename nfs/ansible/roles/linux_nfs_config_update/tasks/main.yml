@@ -1,0 +1,40 @@
+- name: add group
+  group:
+    name: admin
+    gid: 1001
+    state: present
+
+- name: add user
+  user:
+    name: admin
+    uid: 1001
+    comment: admin
+    group: admin
+
+- name: ensure share directory present
+  file: 
+    path: "{{ nfs_share_directory }}"
+    state: directory
+    mode: '0744'
+    owner: admin
+    group: admin
+
+- name: ensure other directory present
+  file: 
+    path: "{{ nfs_other_directory }}"
+    state: directory
+    mode: '0744'
+    owner: admin
+    group: admin
+
+- name: ensure share directory present
+  shell: echo "Hello NFS Server Test!!" > "{{ nfs_share_directory }}"/hellonfs.txt; chown -R admin:admin "{{ nfs_share_directory }}"
+
+- name: ensure other directory present
+  shell: echo "Hello NFS Server Test in other!!" > "{{ nfs_other_directory }}"/hellonfsother.txt; chown -R admin:admin "{{ nfs_other_directory }}"
+
+- name: configure nfs server
+  template: 
+    src: exports.j2
+    dest: /etc/exports
+    mode: '0644'

@@ -1,0 +1,3 @@
+---
+nginx_doc_root: "/usr/share/nginx/html"
+static_doc_loc: "/home/admin/middleware/stack/github_space/learnansible/fedresearch"

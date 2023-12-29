@@ -1,0 +1,7 @@
+- name: ensure prometheus service stopped
+  include_role:
+    name: linux_stop_prometheus
+
+- name: ensure prometheus service started
+  include_role:
+    name: linux_start_prometheus

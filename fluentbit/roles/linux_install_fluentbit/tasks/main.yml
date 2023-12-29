@@ -1,0 +1,16 @@
+---
+- name: Add fluentbit repository
+  yum_repository:
+    name: fluent-bit
+    description: fluent-bit repo
+    #baseurl: https://packages.fluentbit.io/centos/$releasever/
+    baseurl: https://packages.fluentbit.io/centos/9/
+    gpgkey: https://packages.fluentbit.io/fluentbit.key
+    gpgcheck: true
+    repo_gpgcheck: true
+    enabled: true
+
+- name: Install fluent-bit
+  dnf:
+    name: fluent-bit
+    state: latest

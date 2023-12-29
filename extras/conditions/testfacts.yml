@@ -1,0 +1,17 @@
+---
+- name: Test the facts
+  hosts: all
+  vars:
+    test: "Hello facts"
+  tasks:
+    - name: Get the variable data
+      debug:
+        var: test
+
+    - name: Get the facts data
+      debug:
+        var: ansible_facts
+
+    - name: Get the OS family of the systems
+      debug: msg="Executing on this machine"
+      when: ansible_facts['os_family'] == "RedHat"

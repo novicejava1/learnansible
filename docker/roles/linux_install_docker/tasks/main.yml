@@ -1,0 +1,45 @@
+- name: Add docker-ce repository
+  yum_repository:
+    name: docker-ce
+    description: docker-ce
+    baseurl: "{{docker_install_repo}}"
+    gpgkey: "{{docker_install_gpg_key}}"
+    gpgcheck: true
+    repo_gpgcheck: true
+    enabled: true
+
+- name: Install docker-ce and dependent packages
+  yum:
+    name: "{{packages}}"
+    state: present
+  vars:
+    packages:
+      - "docker-ce"
+      - "docker-ce-cli"
+      - "containerd.io"
+      - "docker-buildx-plugin"
+      - "docker-compose-plugin"
+
+- name: ensure group "docker" exists
+  group:
+    name: docker
+    state: present
+
+- name: Add the user "admin" to group "docker"
+  user:
+    name: "{{docker_user}}"
+    group: "{{docker_user}}"
+    groups: "docker"
+    append: yes
+
+- name: Reload systemd daemon
+  systemd:
+    daemon_reload: yes
+
+- name: Start Docker service
+  service:
+    name: docker
+    state: started
+
+- name: Validate Docker installation
+  command: "docker run hello-world"

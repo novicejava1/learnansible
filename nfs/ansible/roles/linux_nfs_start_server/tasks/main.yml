@@ -1,0 +1,4 @@
+- name: ensure nfs service is started
+  service:
+    name: nfs-server
+    state: started

@@ -1,0 +1,16 @@
+- name: "upload collectd config"
+  template:
+    src: "{{collectd_config_template}}"
+    dest: "{{collectd_config_directory}}/{{collectd_config_template}}"
+    owner: "root"
+    group: "root"
+    mode: 0644
+
+- name: "upload plugin specific config"
+  template:
+    src: "{{collectd_config_network}}"
+    dest: "{{collectd_config_directory}}/collectd.d/{{collectd_config_network}}"
+    owner: "root"
+    group: "root"
+    mode: 0644
+    

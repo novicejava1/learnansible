@@ -1,0 +1,12 @@
+---
+- name: linux httpd server management
+  hosts: httpd
+  become: true
+  become_user: root
+  roles:
+  - {role: 'linux_httpd_install_server'}
+  - {role: 'linux_httpd_stop_server'}
+  - {role: 'linux_httpd_config_backup'}
+  - {role: 'linux_httpd_config_update'}
+  - {role: 'linux_httpd_start_server'}
+  - {role: 'linux_httpd_service_status'}

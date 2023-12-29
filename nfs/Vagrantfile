@@ -1,0 +1,31 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+  config.hostmanager.enabled = true
+  config.hostmanager.manage_host = true
+  config.hostmanager.manage_guest = true
+
+  config.vm.define "nfs" do |nfs|
+    nfs.vm.box = "fedora/38-cloud-base"
+    nfs.vm.hostname = "fednfs.stack.com"
+    nfs.vm.network "forwarded_port", guest: 2049, host: 2049
+    #nfs.vm.network "forwarded_port", guest: 20048, host: 20048
+
+    nfs.vm.synced_folder '.', '/vagrant', disabled: true
+    nfs.vm.synced_folder ".", "/home/vagrant/nfs", type: "sshfs"
+
+    nfs.vm.provider "libvirt" do |libvirt|
+      libvirt.cpus = 2
+      libvirt.memory = 2048
+    end
+
+    # Switch to "ansible_local" to install and use ansible on guest VM
+
+    nfs.vm.provision "ansible" do |ansible|
+      ansible.playbook = "ansible/linux_nfs_provision_server.yml"
+      ansible.verbose = true
+    end
+  end
+end

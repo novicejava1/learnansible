@@ -1,0 +1,6 @@
+.vagrant
+*.xml
+*.html
+*.sh
+*.zip
+*.bz2

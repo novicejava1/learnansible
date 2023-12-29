@@ -1,0 +1,12 @@
+---
+- name: Iterate items example
+  hosts: all
+  vars:
+    hosts:
+      testhost1: 127.0.0.2
+      testhost2: 127.0.0.3
+  tasks:
+    - name: Print Iterated items
+      debug:
+        msg: '{{ item }}'
+      loop: "{{ hosts.items() | list }}"

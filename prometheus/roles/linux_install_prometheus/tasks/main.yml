@@ -1,0 +1,33 @@
+---
+- name: ensure software directory exists
+  file:
+    path: "{{prometheus_download_directory}}"
+    state: directory
+    owner: "{{prometheus_user}}"
+    group: "{{prometheus_user}}"
+    mode: 0755
+
+- name: ensure installation directory exists
+  file:
+    path: "{{prometheus_install_directory}}"
+    state: directory
+    owner: "{{prometheus_user}}"
+    group: "{{prometheus_user}}"
+    mode: 0755
+
+- name: Download prometheus package
+  get_url:
+    url: "{{prometheus_install_package}}"
+    dest: "{{prometheus_download_directory}}/prometheus.tar.gz"
+    owner: "{{prometheus_user}}"
+    group: "{{prometheus_user}}"
+    mode: 0755
+
+- name: Extract prometheus package
+  unarchive:
+    src: "{{prometheus_download_directory}}/prometheus.tar.gz"
+    dest: "{{prometheus_install_directory}}"
+    owner: "{{prometheus_user}}"
+    group: "{{prometheus_user}}"
+    remote_src: true
+

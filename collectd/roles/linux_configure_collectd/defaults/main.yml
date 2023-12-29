@@ -1,0 +1,6 @@
+---
+collectd_config_directory: /etc
+collectd_config_template: collectd.conf
+collectd_config_network: network.conf
+collectd_config_network_host: 192.168.122.6
+collectd_config_network_port: 25826

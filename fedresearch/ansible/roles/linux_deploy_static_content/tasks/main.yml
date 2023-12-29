@@ -1,0 +1,10 @@
+- name: deploy static content
+  copy:
+    src: "/home/admin/middleware/stack/github_space/learnansible/fedresearch/helloworld"
+    dest: "{{ nginx_doc_root }}"
+
+- name: ensure nginx service is restarted
+  service:
+    name: nginx
+    state: restarted
+    enabled: yes

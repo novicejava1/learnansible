@@ -1,0 +1,9 @@
+---
+- name: Loop through a dictionary
+  hosts: all
+  tasks:
+    - name: Loop through a dictionary of books data
+      debug: msg="{{ item.name }} - {{ item.author }}"
+      loop:
+        - { name: "Head first Python", author: "Mike Taylor"}
+        - { name: "Learing Ansible", author: "Rick Beard"}

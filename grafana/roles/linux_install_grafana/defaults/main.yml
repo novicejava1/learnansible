@@ -1,0 +1,3 @@
+---
+grafana_install_repo: "https://rpm.grafana.com"
+grafana_install_gpg_key: "https://rpm.grafana.com/gpg.key"

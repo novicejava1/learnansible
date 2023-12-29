@@ -1,0 +1,5 @@
+---
+grafana_config_directory: /etc/grafana
+grafana_config_template: grafana.ini
+grafana_config_host: fedres.stack.com
+grafana_http_port: 3000

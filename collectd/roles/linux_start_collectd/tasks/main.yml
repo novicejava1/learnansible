@@ -1,0 +1,4 @@
+- name: "ensure collectd service started"
+  service:
+    name: collectd
+    state: started

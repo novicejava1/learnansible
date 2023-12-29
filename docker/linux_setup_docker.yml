@@ -1,0 +1,14 @@
+---
+- hosts: "docker"
+  serial: 1
+  become: true
+  become_user: root
+  roles:
+  - { role: "linux_ping", tags: "linux_ping" }
+  - { role: "linux_install_docker", tags: "linux_install_docker" }
+  - { role: "linux_configure_docker", tags: "linux_configure_docker" }
+  - { role: "linux_start_docker", tags: "linux_start_docker" }
+  - { role: "linux_stop_docker", tags: "linux_stop_docker" }
+  - { role: "linux_restart_docker", tags: "linux_restart_docker" }
+
+

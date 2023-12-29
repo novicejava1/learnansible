@@ -1,0 +1,13 @@
+---
+- hosts: "collectd"
+  serial: 1
+  become: true
+  become_user: root
+  roles:
+  - { role: "linux_ping", tags: "linux_ping" }
+  - { role: "linux_install_collectd", tags: "linux_install_collectd" }
+  - { role: "linux_configure_collectd", tags: "linux_configure_collectd" }
+  - { role: "linux_restart_collectd", tags: "linux_restart_collectd" }
+  - { role: "linux_stop_collectd", tags: "linux_stop_collectd" }
+  - { role: "linux_start_collectd", tags: "linux_start_collectd" }
+  

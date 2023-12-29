@@ -1,0 +1,4 @@
+- name: "ensure collectd service stopped"
+  service:
+    name: collectd
+    state: stopped

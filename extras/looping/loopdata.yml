@@ -1,0 +1,11 @@
+---
+- name: Loop through items
+  hosts: all
+  tasks:
+    - name: Loop through fruits
+      debug:
+        msg: '{{ item }}'
+      loop:
+      - Apple
+      - Orange
+      - Banana

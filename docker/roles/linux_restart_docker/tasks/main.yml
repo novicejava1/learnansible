@@ -1,0 +1,4 @@
+- name: "ensure docker service restarted"
+  service:
+    name: docker
+    state: restarted

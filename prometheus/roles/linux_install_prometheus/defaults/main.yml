@@ -1,0 +1,6 @@
+---
+prometheus_install_package: "https://github.com/prometheus/prometheus/releases/download/v2.49.0-rc.1/prometheus-2.49.0-rc.1.linux-amd64.tar.gz"
+prometheus_download_directory: "/opt/software"
+prometheus_install_directory: "/opt/prometheus"
+prometheus_user: "admin"
+prometheus_group: "admin"

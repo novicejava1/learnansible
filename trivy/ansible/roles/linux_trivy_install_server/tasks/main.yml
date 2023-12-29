@@ -1,0 +1,21 @@
+- name: Copy the trivy repository file to managed node
+  copy:
+    src: trivy.repo
+    dest: /etc/yum.repos.d/trivy.repo
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Install Trivy package
+  dnf:
+    name=trivy
+    state=present
+
+- name: Copy Trivy scan script
+  copy:
+    src: trivyscan.sh
+    dest: /home/vagrant/trivy/trivyscan.sh
+    mode: 0755
+
+- name: Scan container images
+  shell: /home/vagrant/trivy/trivyscan.sh

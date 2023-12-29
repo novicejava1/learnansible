@@ -1,0 +1,9 @@
+---
+- name: Lookup data example
+  hosts: all
+  vars:
+    hostfile: "{{ lookup('file', '/etc/hosts') }}"
+  tasks:
+  - name: Print the lookup variable
+    debug:
+      msg: "hostfile value is {{ hostfile }}" 

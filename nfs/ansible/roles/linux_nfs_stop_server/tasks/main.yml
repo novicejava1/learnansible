@@ -1,0 +1,5 @@
+- name: ensure nfs service is stopped
+  service:
+    name: nfs-server
+    state: stopped
+

@@ -1,0 +1,4 @@
+---
+oval_endpoint: "https://security-metadata.canonical.com/oval/com.ubuntu.$(lsb_release -cs).usn.oval.xml.bz2"
+ssg_endpoint: "https://github.com/ComplianceAsCode/content/releases/download/v0.1.69/scap-security-guide-0.1.69.zip"
+ssg_version: "scap-security-guide-0.1.69"

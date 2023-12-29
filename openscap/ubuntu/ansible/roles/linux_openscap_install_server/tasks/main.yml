@@ -1,0 +1,34 @@
+- name: ubuntu release name
+  command: lsb_release -cs
+  register: rel
+
+- name: print ubuntu release
+  debug: msg={{ rel.stdout }}
+
+- name: install openscap-scanner
+  apt:
+    name:
+      - libopenscap8
+      - ssg-debderived
+    state: latest
+  
+- name: validate installation
+  shell: oscap --version | grep "command line tool"
+  register: oscap_version
+  
+- name: print oscap version
+  debug: msg={{ oscap_version.stdout }}
+
+- name: copy script
+  copy:
+    src: openscap_scan.sh
+    dest: /home/vagrant/openscap/openscap_scan.sh
+    mode: 0755
+
+- name: print oval, ssg, ssg_version
+  debug:
+    msg: oval {{ oval_endpoint }}, ssg {{ ssg_endpoint }}, ssg_version {{ ssg_version }}
+  
+- name: Scan system for vulnerability
+  shell: /home/vagrant/openscap/openscap_scan.sh "{{ oval_endpoint }}" "{{ ssg_endpoint }}" "{{ ssg_version }}"
+  ignore_errors: true

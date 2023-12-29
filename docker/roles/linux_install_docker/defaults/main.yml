@@ -1,0 +1,4 @@
+---
+docker_install_repo: "https://download.docker.com/linux/fedora/$releasever/$basearch/stable"
+docker_install_gpg_key: "https://download.docker.com/linux/fedora/gpg"
+docker_user: "admin"

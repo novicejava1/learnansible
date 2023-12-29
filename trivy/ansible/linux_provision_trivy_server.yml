@@ -1,0 +1,8 @@
+---
+- name: linuxn trivy server management
+  hosts: trivy
+  become: true
+  become_user: root
+  roles:
+  - { role: 'linux_trivy_install_server' }
+

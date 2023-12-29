@@ -1,0 +1,17 @@
+[observability:children]
+fluent-bit
+
+[fluent-bit:children]
+fluent-bit_dev
+fluent-bit_pre
+fluent-bit_prd
+
+
+[fluent-bit_dev]
+fedresdev.stack.com
+
+[fluent-bit_pre]
+fedrespre.stack.com
+
+[fluent-bit_prd]
+fedres.stack.com

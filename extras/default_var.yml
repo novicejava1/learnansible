@@ -1,0 +1,16 @@
+---
+- name: Set default varible
+  hosts: all
+  tasks:
+     - name: echo default string
+       command: "echo {{ item.data | default(5) }}"
+       with_items:
+       - data: "Hello"
+       register: output
+     - name: Loop through directory
+       shell: for i in {0..10}; do echo $i; done
+       register: listing
+     - name: Debug
+       debug: msg="{{ output }}"
+     - name: listing_directory
+       debug: msg="{[ listing ]}"

@@ -1,0 +1,10 @@
+---
+- name: Loop through servers
+  hosts: all
+  tasks:
+    - name: Loop through the list of servers
+      debug: msg="Server - {{ item }}"
+      loop:
+        - gitlab
+        - jenkins
+        - Jfrog

@@ -1,0 +1,6 @@
+---
+fluentbit_config_directory: /etc/fluent-bit
+fluentbit_config_template: fluent-bit.conf
+fluentbit_config_host: fedres.stack.com
+
+

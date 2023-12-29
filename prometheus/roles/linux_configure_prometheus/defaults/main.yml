@@ -1,0 +1,9 @@
+---
+#prometheus_config_directory: /etc/prometheus
+prometheus_config_template: prometheus.yml
+prometheus_download_directory: "/opt/software"
+prometheus_install_directory: "/opt/prometheus"
+prometheus_user: "admin"
+prometheus_group: "admin"
+prometheus_scrape_host: fedres.stack.com
+prometheus_scrape_port: 2021

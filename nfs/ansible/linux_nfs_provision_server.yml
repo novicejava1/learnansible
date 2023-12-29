@@ -1,0 +1,14 @@
+---
+- name: linuxn nfs server management
+  hosts: nfs
+  become: true
+  become_user: root
+  roles:
+  - { role: 'linux_nfs_install_server' }
+  - { role: 'linux_nfs_stop_server' }
+  - { role: 'linux_nfs_config_backup' }
+  - { role: 'linux_nfs_config_update' }
+  - { role: 'linux_nfs_start_server' }
+
+
+

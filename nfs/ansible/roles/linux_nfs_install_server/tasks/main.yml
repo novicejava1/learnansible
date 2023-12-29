@@ -1,0 +1,11 @@
+---
+- name: install nfs server
+  dnf:
+    name: nfs-utils
+    state: present
+
+- name: ensure nfs service is enabled and running
+  service: 
+    name: nfs-server
+    state: started 
+    enabled: yes

@@ -1,0 +1,30 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+  config.hostmanager.enabled = true
+  config.hostmanager.manage_host = true
+  config.hostmanager.manage_guest = true
+
+  config.vm.define "openscap" do |openscap|
+    openscap.vm.box = "generic/ubuntu2004"
+    openscap.vm.hostname = "ubopenscap.stack.com"
+    #openscap.vm.network "forwarded_port", guest: 80, host: 8080
+
+    openscap.vm.synced_folder '.', '/vagrant', disabled: true
+    openscap.vm.synced_folder ".", "/home/vagrant/openscap", type: "sshfs"
+
+    openscap.vm.provider "libvirt" do |libvirt|
+      libvirt.cpus = 2
+      libvirt.memory = 2048
+    end
+
+    # Switch to "ansible_local" to install and use ansible on guest VM
+
+    openscap.vm.provision "ansible" do |ansible|
+      ansible.playbook = "ansible/linux_openscap_install_server.yml"
+      ansible.verbose = true
+    end
+  end
+end

@@ -1,0 +1,12 @@
+---
+- name: Get OS distribution
+  hosts: all
+  
+  tasks:
+    - name: Get OS distribution from each remote host
+      shell: echo "OS - {{ ansible_facts['distribution'] }}"
+      register: dist
+
+    - name: Print OS distribution
+      debug:
+        msg: '{{ dist }}'

@@ -1,0 +1,2 @@
+flask_apps_root: "/home/admin/middleware/stack/github_space/learnansible/fedresearch/flaskapps"
+flask_deploy_root: "/home/admin"

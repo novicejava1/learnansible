@@ -1,0 +1,4 @@
+- name: "ensure fluent-bit service running"
+  service:
+    name: fluent-bit
+    state: restarted

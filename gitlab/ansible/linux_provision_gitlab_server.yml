@@ -1,0 +1,8 @@
+---
+- name: linuxn gitlab server management
+  hosts: gitlab
+  become: true
+  become_user: root
+  roles:
+  - { role: 'linux_docker_install_server' }  
+  - { role: 'linux_gitlab_install_server' }

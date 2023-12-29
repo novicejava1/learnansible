@@ -1,0 +1,4 @@
+- name: "ensure collectd service restarted"
+  service:
+    name: collectd
+    state: restarted

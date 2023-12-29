@@ -1,0 +1,15 @@
+---
+- hosts: "fluent-bit"
+  serial: 1
+  become: true
+  become_user: root
+  roles:
+  - { role: "linux_ping", tags: "linux_ping" }
+  - { role: "linux_install_fluentbit", tags: "linux_install_fluentbit" }
+  - { role: "linux_configure_fluentbit", tags: "linux_configure_fluentbit" }
+  - { role: "linux_restart_fluentbit", tags: "linux_restart_fluentbit" }
+  - { role: "linux_stop_fluentbit", tags: "linux_stop_fluentbit" }
+  - { role: "linux_start_fluentbit", tags: "linux_start_fluentbit" }
+  - { role: "linux_expose_fluentbit", tags: "linux_expose_fluentbit" }
+
+  

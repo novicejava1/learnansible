@@ -1,0 +1,34 @@
+---
+# Deploy the whole application stack to site
+
+# Facts gathering default step
+- hosts: monitoring
+  tasks: []
+
+# Apply common configuration
+- hosts: all
+  roles:
+    - common
+
+
+# Configure and Deploy DB server
+- hosts: dbservers
+  roles:
+    - db
+
+# Configure Apache web server and deploy application
+- hosts: webservers
+  roles:
+    - base-apache
+    - web
+
+# Configure and Deploy LB
+- hosts: lbservers
+  roles:
+    - haproxy
+
+# Configure and Deploy Nagios monitoring
+- hosts: monitoring
+  roles:
+    - base-apache
+    - nagios

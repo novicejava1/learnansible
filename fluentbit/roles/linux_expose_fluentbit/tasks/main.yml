@@ -1,0 +1,12 @@
+---
+- name: expose prometheus endpoint
+  firewalld:
+    port: 2021/tcp
+    permanent: true
+    immediate: true
+    state: enabled
+
+- name: restart firewalld service
+  service:
+    name: firewalld
+    state: restarted

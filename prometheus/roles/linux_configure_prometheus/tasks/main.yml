@@ -1,0 +1,16 @@
+- name: find prometheus config
+  command: "find {{prometheus_install_directory}}/ -type f -name {{prometheus_config_template}}"
+  register: prometheus_config_directory
+
+- debug: msg="{{prometheus_config_directory.stdout}}"
+
+- set_fact:
+    prometheus_config_directory: "{{ prometheus_config_directory.stdout }}"
+
+- name: "upload prometheus config"
+  template:
+    src: "{{prometheus_config_template}}"
+    dest: "{{prometheus_config_directory}}"
+    owner: "{{prometheus_user}}"
+    group: "{{prometheus_group}}"
+    mode: 0644

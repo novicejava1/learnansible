@@ -1,0 +1,48 @@
+---
+- name: Install pre-requisite packages
+  dnf: name={{ item }} state=present
+  with_items:
+    - dnf-plugins-core
+
+- name: Add Docker repository
+  command: "dnf config-manager --add-repo {{docker_repository}}"
+
+- name: Install Docker Engine
+  dnf: name={{ item }} state=present
+  with_items:
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io
+
+- name: Ensure group "docker" exists
+  group:
+    name: docker
+    state: present
+
+- name: Add the user 'vagrant' to group of 'docker'
+  user:
+    name: "{{sonar_user}}"
+    group: "{{sonar_group}}"
+    groups: docker
+    append: yes
+
+- name: Reload systemd daemon
+  systemd:
+    daemon_reload: yes
+
+- name: Enable and Start Docker service
+  service:
+    name: docker
+    enabled: yes
+    state: started
+
+- name: Validate Docker installation
+  command: "docker run hello-world"
+
+- name: install docker compose
+  command: "curl -SL {{docker_compose_repository}} -o /usr/local/bin/docker-compose"
+
+- name: ensure executable perm docker-compose 
+  file:
+    path: /usr/local/bin/docker-compose
+    mode: '0755'
