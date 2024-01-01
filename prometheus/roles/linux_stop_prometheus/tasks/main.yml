@@ -1,12 +1,12 @@
 - name: identify the prometheus process id
   command: "pgrep -f prometheus"
-  register: prometheuspid
+  register: prometheus_process_id
 
-- debug: msg="{{prometheuspid.stdout}}"
+- debug: msg="{{prometheus_process_id.stdout}}"
 
 - set_fact:
-    prometheuspid: "{{ prometheuspid.stdout }}"
+    prometheus_process_id: "{{ prometheus_process_id.stdout }}"
 
 - name: ensure prometheus stopped
-  command: "kill -9 {{prometheuspid}}"
+  command: "kill -9 {{prometheus_process_id}}"
 

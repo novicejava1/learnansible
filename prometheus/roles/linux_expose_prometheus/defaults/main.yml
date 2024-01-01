@@ -1,2 +1,2 @@
 ---
-grafana_http_port: "3000"
+prometheus_listen_port: "2121"

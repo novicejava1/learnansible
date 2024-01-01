@@ -1,21 +1,21 @@
 - name: find prometheus binary
   command: "find /opt/prometheus/ -type f -name prometheus"
-  register: prometheusbin
+  register: prometheus_install_binary
 
 - name: find prometheus config
   command: "find /opt/prometheus/ -type f -name prometheus.yml"
-  register: prometheusconfig
+  register: prometheus_config_file
 
-- debug: msg="{{prometheusbin.stdout}}"
+- debug: msg="{{prometheus_install_binary.stdout}}"
 
-- debug: msg="{{prometheusconfig.stdout}}"
-
-- set_fact:
-    prometheusbin: "{{ prometheusbin.stdout }}"
+- debug: msg="{{prometheus_config_file.stdout}}"
 
 - set_fact:
-    prometheusconfig: "{{ prometheusconfig.stdout }}"
+    prometheus_install_binary: "{{ prometheus_install_binary.stdout }}"
+
+- set_fact:
+    prometheus_config_file: "{{ prometheus_config_file.stdout }}"
 
 - name: "ensure prometheus service started"
 #  command: "/opt/prometheus/prometheus-2.49.0-rc.1.linux-amd64/prometheus --config.file=/opt/prometheus/prometheus-2.49.0-rc.1.linux-amd64/prometheus.yml --web.listen-address=':2121'"
-  shell: "{{prometheusbin}} --config.file={{prometheusconfig}} --web.listen-address=':2121' 2>&1 &"
+  shell: "{{prometheus_install_binary}} --config.file={{prometheus_config_file}} --web.listen-address='{{prometheus_listen_address}}:{{prometheus_listen_port}}' 2>&1 | tee /tmp/prometheus.log &"

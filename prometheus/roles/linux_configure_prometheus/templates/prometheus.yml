@@ -27,4 +27,4 @@ scrape_configs:
 
     static_configs:
       - targets: ["{{prometheus_scrape_host}}:{{prometheus_scrape_port}}"]
-   
+ 

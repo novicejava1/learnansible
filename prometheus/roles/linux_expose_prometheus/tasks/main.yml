@@ -1,7 +1,7 @@
 ---
-- name: expose grafana
+- name: expose prometheus
   firewalld:
-    port: "{{grafana_http_port}}/tcp"
+    port: "{{prometheus_listen_port}}/tcp"
     permanent: true
     immediate: true
     state: enabled
@@ -10,10 +10,3 @@
   service:
     name: firewalld
     state: restarted
-
-- name: Allow grafana connect prometheus instance port 2121
-  seport:
-    ports: 3000, 2121
-    proto: tcp
-    setype: grafana_port_t
-    state: present
