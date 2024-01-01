@@ -15,3 +15,4 @@
   dnf:
     name: grafana
     state: present
+

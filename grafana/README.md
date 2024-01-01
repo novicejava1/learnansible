@@ -8,12 +8,8 @@ ansible-playbook linux_setup_grafana.yml -i inventory/hosts --tags "linux_start_
 ansible-playbook linux_setup_grafana.yml -i inventory/hosts --tags "linux_restart_grafana" -v
 ansible-playbook linux_setup_grafana.yml -i inventory/hosts --tags "linux_expose_grafana" -v
 
-TODO
 
-# Download prometheus
+# load datasource configuration
 
-# Setup a prometheus instance
-# ./prometheus --config.file=./prometheus.yml --web.listen-address=":2121"
+ansible-playbook linux_setup_grafana.yml -i inventory/hosts --extra-vars "grafana_datasource_template=prometheus.yml" --tags "linux_configure_grafana" -v
 
-# Configure Prometheus Datasource in Grafana dashboard
-# URL - http://fedres.stack.com:2121

@@ -5,3 +5,11 @@
     owner: "root"
     group: "grafana"
     mode: 0640
+
+- name: "upload grafana prometheus datasource config yml"
+  template:
+    src: "{{grafana_datasource_template}}"
+    dest: "{{grafana_config_directory}}/provisioning/datasources/{{grafana_datasource_template}}"
+    owner: "root"
+    group: "grafana"
+    mode: 0640

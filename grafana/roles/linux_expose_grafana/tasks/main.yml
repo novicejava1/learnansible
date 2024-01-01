@@ -11,9 +11,9 @@
     name: firewalld
     state: restarted
 
-- name: Allow grafana connect prometheus instance port 2121
-  seport:
-    ports: 3000, 2121
-    proto: tcp
-    setype: grafana_port_t
-    state: present
+#- name: Allow grafana connect prometheus instance port 2121
+#  seport:
+#    ports: 3000, 2121
+#    proto: tcp
+#    setype: grafana_port_t
+#    state: present
