@@ -1,0 +1,4 @@
+---
+cilium_cli_version: v0.15.18
+cli_arch: amd64
+cilium_repo: https://github.com/cilium/cilium-cli/releases/download/{{cilium_cli_version}}/cilium-linux-{{cli_arch}}.tar.gz

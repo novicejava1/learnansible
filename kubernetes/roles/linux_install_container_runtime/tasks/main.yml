@@ -1,0 +1,11 @@
+---
+- name: Install crio container runtime
+  dnf:
+    name: cri-o
+    state: present                                # ensure that package is not updated to latest version
+
+- name: ensure crio service running
+  service:
+    name: crio
+    state: started
+    enabled: yes

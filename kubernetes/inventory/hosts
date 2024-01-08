@@ -1,0 +1,7 @@
+[controller]
+#kubemaster.stack.com
+k8master.stack.com
+
+[worker]
+#kubenode.stack.com
+k8node.stack.com

@@ -1,0 +1,3 @@
+---
+kubernetes_admin_user: admin
+kubernetes_admin_group: admin

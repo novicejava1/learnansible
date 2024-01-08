@@ -1,0 +1,2 @@
+---
+kubernetes_cni_plugin_repo: https://github.com/containernetworking/plugins/releases/download/v1.4.0/cni-plugins-linux-amd64-v1.4.0.tgz

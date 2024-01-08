@@ -1,0 +1,16 @@
+---
+- hosts: "controller"
+  serial: 1
+  become: true
+  become_user: root
+  roles:
+  - { role: "linux_ping", tags: "linux_ping" }
+  - { role: "linux_configure_kernel", tags: "linux_configure_kernel" }
+  - { role: "linux_install_container_runtime", tags: "linux_install_container_runtime" }
+  - { role: "linux_install_kubernetes_tools", tags: "linux_install_kubernetes_tools" }
+  - { role: "linux_initialize_kubernetes_cluster", tags: "linux_initialize_kubernetes_cluster" }
+  - { role: "linux_export_config", tags: "linux_export_config" }                                                      # export the cluster config to admin user home directory for management
+  - { role: "linux_configure_flannel", tags: "linux_configure_flannel", become: true, become_user: admin }            # update with the user that will adminiter or manage the cluster
+  - { role: "linux_configure_cni_plugins", tags: "linux_configure_cni_plugins" }                                      # for flannel cni plugin fix
+  - { role: "linux_configure_cilium", tags: "linux_configure_cilium", become: true, become_user: admin } 
+

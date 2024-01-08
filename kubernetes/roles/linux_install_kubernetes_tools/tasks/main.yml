@@ -1,0 +1,39 @@
+---
+- name: Copy the kubernetes repository file
+  template:
+    src: kubernetes.repo 
+    dest: /etc/yum.repos.d/kubernetes.repo
+    owner: "root"
+    group: "root"
+    mode: 0644
+
+- name: Set SELinux in permissive mode
+  selinux:
+    policy: targeted
+    state: permissive
+
+- name: Disable SWAP since kubernetes can't work with swap enabled (1/2)
+  shell: |
+    swapoff -a
+    sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+
+- name: Disable zram specific to fedora
+  dnf:
+    name: zram-generator-defaults
+    state: absent
+
+- name: Install kubeadm, kubectl and kubelet 
+  dnf:
+    name: '{{ item }}'
+    state: present
+    disable_excludes: kubernetes
+  with_items:
+    - kubeadm
+    - kubectl
+    - kubelet
+    
+- name: Enable and Start kubelet service
+  service:
+    name: kubelet
+    state: started
+    enabled: yes

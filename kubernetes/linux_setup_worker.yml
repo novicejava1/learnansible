@@ -1,0 +1,14 @@
+---
+- hosts: "worker"
+  serial: 1
+  become: true
+  become_user: root
+  roles:
+  - { role: "linux_ping", tags: "linux_ping" }
+  - { role: "linux_configure_kernel", tags: "linux_configure_kernel" }
+  - { role: "linux_install_container_runtime", tags: "linux_install_container_runtime" }
+  - { role: "linux_install_kubernetes_tools", tags: "linux_install_kubernetes_tools" }
+  - { role: "linux_add_worker_node", tags: "linux_add_worker_node" }
+  - { role: "linux_configure_cni_plugins", tags: "linux_configure_cni_plugins" }              # for flannel cni plugin fix
+
+

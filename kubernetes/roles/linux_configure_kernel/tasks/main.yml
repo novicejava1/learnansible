@@ -1,0 +1,17 @@
+---
+- name: Load bridge network filter and overlay modprobe module
+  modprobe:
+    name: '{{ item }}'
+    state: present
+    persistent: present                               # adds module name to /etc/modules-load.d/ and params to /etc/modprobe.d/
+  with_items:
+    - br_netfilter
+    - overlay
+
+- name: Update sysctl parameters
+  sysctl:
+    name: '{{ item.key }}'
+    value: '{{ item.value }}'
+    state: present
+    reload: yes
+  with_dict: '{{ sysctl_config }}'

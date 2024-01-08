@@ -1,0 +1,2 @@
+---
+kubernetes_network_policy_repo: https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml

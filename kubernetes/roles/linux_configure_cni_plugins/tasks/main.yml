@@ -1,0 +1,9 @@
+---
+- name: downaload and extract cni plugins
+  unarchive:
+    src: "{{kubernetes_cni_plugin_repo}}"
+    dest: /opt/cni/bin
+    remote_src: yes
+
+#- name: downaload and extract cni plugins
+#  ping:
