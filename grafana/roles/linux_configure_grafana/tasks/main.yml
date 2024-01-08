@@ -13,3 +13,10 @@
     owner: "root"
     group: "grafana"
     mode: 0640
+
+- name: Update grafana semanage ports
+  seport:
+    ports: 3000,2121
+    proto: tcp
+    setype: grafana_port_t
+    state: present
