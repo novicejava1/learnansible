@@ -1,0 +1,4 @@
+---
+aws_client_home: /home/admin/.aws
+aws_client_user: admin
+aws_client_group: admin

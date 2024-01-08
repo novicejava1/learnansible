@@ -1,0 +1,13 @@
+---
+- hosts: "awscli"
+  serial: 1
+  become: true
+  become_user: root
+  roles:
+  - { role: "linux_ping", tags: "linux_ping" }
+  - { role: "linux_install_aws_client", tags: "linux_install_aws_client"}
+  - { role: "linux_configure_aws_client", tags: "linux_configure_aws_client"}
+  - { role: "linux_update_aws_client", tags: "linux_update_aws_client"}
+
+
+ 

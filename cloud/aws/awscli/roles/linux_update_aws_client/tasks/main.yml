@@ -1,0 +1,52 @@
+---
+- name: ensure software directory exists
+  file:
+    path: "{{aws_client_download_directory}}"
+    state: directory
+    owner: "{{aws_client_user}}"
+    group: "{{aws_client_group}}"
+    mode: 0755
+
+- name: ensure extract directory exists
+  file:
+    path: "{{aws_client_extract_directory}}"
+    state: directory
+    owner: "{{aws_client_user}}"
+    group: "{{aws_client_group}}"
+    mode: 0755
+
+- name: ensure installation directory exists
+  file:
+    path: "{{aws_client_install_directory}}"
+    state: directory
+    owner: "{{aws_client_user}}"
+    group: "{{aws_client_group}}"
+    mode: 0755
+
+- name: Download aws client package
+  get_url:
+    url: "{{aws_client_install_package}}"
+    dest: "{{aws_client_download_directory}}/awscliv2.zip"
+    owner: "{{aws_client_user}}"
+    group: "{{aws_client_group}}"
+    mode: 0755
+
+- name: Extract aws client package
+  unarchive:
+    src: "{{aws_client_download_directory}}/awscliv2.zip"
+    dest: "{{aws_client_extract_directory}}"
+    owner: "{{aws_client_user}}"
+    group: "{{aws_client_group}}"
+    remote_src: true
+ 
+- name: update aws client package
+  command: "{{aws_client_extract_directory}}/aws/install --bin-dir /usr/local/bin --install-dir {{aws_client_install_directory}} --update"
+
+- name: get aws client version
+  command: "/usr/local/bin/aws --version"
+  register: aws_client_version
+
+- name: print aws client version
+  debug:
+    msg: "{{aws_client_version.stdout_lines}}"
+

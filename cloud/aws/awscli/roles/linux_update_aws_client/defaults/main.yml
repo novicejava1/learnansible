@@ -1,0 +1,7 @@
+---
+aws_client_install_package: "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip"
+aws_client_download_directory: "/opt/software"
+aws_client_extract_directory: "/opt/extract/awscli"
+aws_client_install_directory: "/opt/awscli"
+aws_client_user: "admin"
+aws_client_group: "admin"
