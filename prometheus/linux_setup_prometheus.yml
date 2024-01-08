@@ -7,7 +7,7 @@
   - { role: "linux_ping", tags: "linux_ping" }
   - { role: "linux_install_prometheus", tags: "linux_install_prometheus" }
   - { role: "linux_configure_prometheus", tags: "linux_configure_prometheus" }
-  - { role: "linux_stop_prometheus", become_user: "admin", tags: "linux_stop_prometheus" }
+#  - { role: "linux_stop_prometheus", become_user: "admin", tags: "linux_stop_prometheus" }
   - { role: "linux_start_prometheus", become_user: "admin", tags: "linux_start_prometheus" }
-  - { role: "linux_restart_prometheus", become_user: "admin", tags: "linux_restart_prometheus" }
+#  - { role: "linux_restart_prometheus", become_user: "admin", tags: "linux_restart_prometheus" }
   - { role: "linux_expose_prometheus", tags: "linux_expose_prometheus" }
