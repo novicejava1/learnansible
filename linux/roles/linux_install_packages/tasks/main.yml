@@ -1,0 +1,7 @@
+- name: linux install all updates
+  dnf:
+    name: "*"
+    state: latest
+    security: "{{ security_update }}"
+    exclude: "{{ exclude_list }}"
+

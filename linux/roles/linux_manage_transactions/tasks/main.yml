@@ -1,0 +1,12 @@
+- name: dnf transaction undo
+  shell: dnf history undo "{{ transactionID }}" -y
+  register: transundo_output
+  when: action == "undo"
+  
+- name: dnf transaction redo
+  shell: dnf history redo "{{ transactionID }}" -y
+  register: transundo_output
+  when: action == "redo"
+
+- name: print transaction output
+  debug: msg="{{ transundo_output }}"

@@ -1,0 +1,15 @@
+---
+- name: system package management
+  hosts: linux
+  become: true
+  become_user: root
+  roles:
+  - { role: "linux_ping", tags: "linux_ping" }
+  - { role: 'linux_install_packages', tags: "linux_install_packages" }
+  - { role: 'linux_list_installed_packages', tags: "linux_list_installed_packages" }
+  - { role: 'linux_list_transactions', tags: "linux_list_transactions" }
+  - { role: 'linux_manage_transactions', tags: "linux_manage_transactions" }
+
+
+
+  
