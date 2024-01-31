@@ -1,0 +1,13 @@
+- name: ensure fedora packaging tools installed
+  dnf:
+    name:
+      - fedora-packager
+      - fedora-review
+    state: latest
+
+- name: ensure user member of mock group                    # To test the build procedure in a clean chroot with Mock
+  user:
+    name: "{{fedora_build_user}}"
+    shell: /bin/bash
+    groups: mock
+    append: yes

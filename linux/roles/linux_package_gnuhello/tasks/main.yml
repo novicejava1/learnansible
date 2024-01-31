@@ -1,0 +1,23 @@
+- name: ensure package directory exists
+  file:
+    path: "{{gnu_hello_package_dir}}"
+    state: directory
+    recurse: yes
+    owner: admin
+    group: admin
+    mode: '0755'
+
+- name: upload template spec file
+  template:
+    src: "{{gnu_hello_package_spec_file}}"
+    dest: "{{gnu_hello_package_dir}}/{{gnu_hello_package_spec_file}}"
+    owner: "admin"
+    group: "admin"
+    mode: 0644
+
+- name: ensure source code tarball downloaded
+  shell: "cd {{gnu_hello_package_dir}}; spectool -g {{gnu_hello_package_dir}}/{{gnu_hello_package_spec_file}}"
+
+- name: build package
+  shell: "cd {{gnu_hello_package_dir}}; fedpkg --release f39 mockbuild"
+

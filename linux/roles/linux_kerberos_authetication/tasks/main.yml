@@ -1,0 +1,13 @@
+#- name: acquire kerberos ticket
+#  command: "fkinit -u {{fedora_fas_account}}"
+#  register: kerberos.authentication
+#
+#- name: validate authentication
+#  become: true
+#  become_user: admin
+#  command: "koji moshimoshi"
+#
+#- name: get kerberos token expiry
+#  become: true
+#  become_user: admin
+#  command: "klist"

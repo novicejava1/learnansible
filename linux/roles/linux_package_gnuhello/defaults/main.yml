@@ -1,0 +1,5 @@
+---
+gnu_hello_package_dir: "/home/admin/fedora/hello"
+gnu_hello_package_name: "hello"
+gnu_hello_package_version: "2.10"
+gnu_hello_package_spec_file: hello.spec
