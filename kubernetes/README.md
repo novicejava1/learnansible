@@ -2,6 +2,7 @@
 
 ansible-playbook linux_setup_controller.yml -i inventory/hosts --tags "linux_ping" -v
 ansible-playbook linux_setup_controller.yml -i inventory/hosts --tags "linux_configure_kernel" -v
+ansible-playbook linux_setup_controller.yml -i inventory/hosts --tags "linux_configure_firewall" --extra-vars "server_type=master" -v
 ansible-playbook linux_setup_controller.yml -i inventory/hosts --tags "linux_install_container_runtime" -v
 ansible-playbook linux_setup_controller.yml -i inventory/hosts --tags "linux_install_kubernetes_tools" -v
 ansible-playbook linux_setup_controller.yml -i inventory/hosts --tags "linux_initialize_kubernetes_cluster" -v
@@ -15,6 +16,7 @@ ansible-playbook linux_setup_controller.yml -i inventory/hosts --tags "linux_con
 
 ansible-playbook linux_setup_worker.yml -i inventory/hosts --tags "linux_ping" -v
 ansible-playbook linux_setup_worker.yml -i inventory/hosts --tags "linux_configure_kernel" -v
+ansible-playbook linux_setup_worker.yml -i inventory/hosts --tags "linux_configure_firewall" --extra-vars "server_type=node" -v
 ansible-playbook linux_setup_worker.yml -i inventory/hosts --tags "linux_install_container_runtime" -v
 ansible-playbook linux_setup_worker.yml -i inventory/hosts --tags "linux_install_kubernetes_tools" -v
 ansible-playbook linux_setup_worker.yml -i inventory/hosts --tags "linux_add_worker_node" -v

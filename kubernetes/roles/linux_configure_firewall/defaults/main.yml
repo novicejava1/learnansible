@@ -1,0 +1,8 @@
+---
+api_server_port: "6443"
+etcd_port: "2379-2380"
+kubelet_port: "10250"
+scheduler_port: "10259"
+conteroller_manager_port: "10257"
+node_services_port: "30000-32767"
+server_type: "master"

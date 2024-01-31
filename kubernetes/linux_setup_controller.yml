@@ -6,6 +6,7 @@
   roles:
   - { role: "linux_ping", tags: "linux_ping" }
   - { role: "linux_configure_kernel", tags: "linux_configure_kernel" }
+  - { role: "linux_configure_firewall", tags: "linux_configure_firewall" }
   - { role: "linux_install_container_runtime", tags: "linux_install_container_runtime" }
   - { role: "linux_install_kubernetes_tools", tags: "linux_install_kubernetes_tools" }
   - { role: "linux_initialize_kubernetes_cluster", tags: "linux_initialize_kubernetes_cluster" }

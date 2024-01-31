@@ -1,0 +1,61 @@
+---
+- name: expose ports on kubernetes master node
+  firewalld:
+    port: "{{api_server_port}}/tcp"
+    permanent: true
+    immediate: true
+    state: enabled
+  when: server_type == "master"
+
+- name: expose ports on kubernetes master node
+  firewalld:
+    port: "{{etcd_port}}/tcp"
+    permanent: true
+    immediate: true
+    state: enabled
+  when: server_type == "master"
+
+- name: expose ports on kubernetes master node
+  firewalld:
+    port: "{{kubelet_port}}/tcp"
+    permanent: true
+    immediate: true
+    state: enabled
+  when: server_type == "master"
+
+- name: expose ports on kubernetes master node
+  firewalld:
+    port: "{{scheduler_port}}/tcp"
+    permanent: true
+    immediate: true
+    state: enabled
+  when: server_type == "master"
+
+- name: expose ports on kubernetes master node
+  firewalld:
+    port: "{{conteroller_manager_port}}/tcp"
+    permanent: true
+    immediate: true
+    state: enabled
+  when: server_type == "master"
+
+- name: expose ports on kubernetes worker node
+  firewalld:
+    port: "{{kubelet_port}}/tcp"
+    permanent: true
+    immediate: true
+    state: enabled
+  when: server_type == "node"
+
+- name: expose ports on kubernetes worker node
+  firewalld:
+    port: "{{node_services_port}}/tcp"
+    permanent: true
+    immediate: true
+    state: enabled
+  when: server_type == "node"
+
+- name: restart firewalld service
+  service:
+    name: firewalld
+    state: restarted
